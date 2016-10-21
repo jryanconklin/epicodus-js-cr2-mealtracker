@@ -35,33 +35,24 @@ For best results, please:
 
 None at this time.
 
-## Specifications
+## User Stories
 
 *I want to log a food I have eaten by submitting a form with food name, calories and details.*
 
-__Input_Name__: "Hamburger"
-__Input_Details__: "Didn't get a soda or cheese on my burger"
-__Input_Calories__: 354
-
-__Output__: Hamburger, Didn't get a soda or cheese on my burger, 354
-
 *I want to view a list of foods I have logged.*
-
-__Input__: "All Foods"
-
-__Output__: "Hamburger, Fries, Cheese on my Burger"
 
 *I want options to view all foods, only high-calorie foods (more than 500 calories), or only lower-calorie foods (less than 500 calories).*
 
-__Input__: "High Calorie Foods"
-
-__Output__: "Hamburger, Fries, Cheese on my Burger"
-
 *I want to click a food to edit its name, details or calories (in case I decide to pretend my fries were 100 calories instead of 365).*
 
-__Input_Old__: "Hamburger"
-__Input_New__: "Cheeseburger"
-__Output__: Cheeseburger
+
+## Specifications
+
+| Behavior            | Input     | Output    |
+| ------------------- |:---------:| ---------:|
+| Enter a food        | Hamburger | Hamburger |
+| Enter a description | No cheese!| No cheese!|
+| Enter Calories      | 365       |    365    |
 
 
 ## Author/s
