@@ -21,6 +21,10 @@ import { MealService } from './meal.service';
       (doneEditingClickedSender)="finishedEditing()"
       ></meal-edit>
 
+      <meal-add
+        (newMealSender)="addMeal($event)"
+      ></meal-add>
+
   <!-- End Row Div -->
     </div>
   <!-- End Container Div -->
@@ -33,6 +37,10 @@ export class AppComponent implements OnInit {
   title = 'Ryan\'s Meal Tracker';
   masterMealList: Meal[];
   selectedMeal: Meal = null;
+
+  addMeal(newMealFromChild: Meal) {
+    this.masterMealList.push(newMealFromChild);
+  }
 
   showEdit(clickedMeal: Meal) {
     this.selectedMeal = clickedMeal;
@@ -55,6 +63,7 @@ export class AppComponent implements OnInit {
     this.getMeals();
   }
 
+  // From Angular Docs, Think of Way to Implement Later - Could be Handy to Delete a Meal?
   // onSelect(meal: Meal): void {
   //   this.selectedMeal = meal;
   //   console.log(this.selectedMeal);

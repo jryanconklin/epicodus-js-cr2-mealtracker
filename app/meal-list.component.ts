@@ -22,7 +22,7 @@ import { Meal } from './meal.model';
             <td>{{ currentMeal.name }}</td>
             <td>{{ currentMeal.details }}</td>
             <td>{{ currentMeal.calories }}</td>
-            <td><button (click)="editButton(currentMeal)">Edit</button></td>
+            <td><button class="btn btn-warning" (click)="editButton(currentMeal)">Edit</button></td>
           </tr>
         </tbody>
       </table>
