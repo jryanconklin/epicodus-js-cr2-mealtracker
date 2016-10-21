@@ -1,4 +1,5 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+
+import { Component, Input, Output, EventEmitter, Pipe } from '@angular/core';
 
 import { Meal } from './meal.model';
 
@@ -16,13 +17,12 @@ import { Meal } from './meal.model';
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let meal of childMealList"
-            [class.selected]="meal === selectedMeal"
-            (click)="onSelect(meal)">
-            <td>{{ meal.name }}</td>
-            <td>{{ meal.details }}</td>
-            <td>{{ meal.calories }}</td>
-            <td><button (click)="editButtonHasBeenClicked(currentMeal)">Edit</button></td>
+          <tr *ngFor="let currentMeal of childMealList"
+            [class.selected]="currentMeal === selectedMeal">
+            <td>{{ currentMeal.name }}</td>
+            <td>{{ currentMeal.details }}</td>
+            <td>{{ currentMeal.calories }}</td>
+            <td><button (click)="editButton(currentMeal)">Edit</button></td>
           </tr>
         </tbody>
       </table>
@@ -32,11 +32,13 @@ import { Meal } from './meal.model';
 
 export class MealListComponent {
   @Input() childMealList: Meal[];
+  @Output() editButtonClickSender = new EventEmitter();
 
-  @Output() clickSender = new EventEmitter();
-
-  editButtonHasBeenClicked(mealToEdit: Meal) {
-    this.clickSender.emit(mealToEdit);
+  editButton(mealToEdit: Meal) {
+    this.editButtonClickSender.emit(mealToEdit);
   }
 
+
+
+//End Meal List Component
 }

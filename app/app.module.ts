@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 //Custom Work
 import { AppComponent } from './app.component';
 import { MealListComponent } from './meal-list.component';
+import { MealEditComponent } from './meal-edit.component';
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import { MealListComponent } from './meal-list.component';
   ],
   declarations: [
     AppComponent,
-    MealListComponent
+    MealListComponent,
+    MealEditComponent
   ],
   bootstrap:    [ AppComponent ]
 })

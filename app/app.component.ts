@@ -1,5 +1,5 @@
 // Angular Libraries
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, Output, OnInit } from '@angular/core';
 
 //Custom Paths
 import { Meal } from './meal.model';
@@ -13,8 +13,15 @@ import { MealService } from './meal.service';
       <h3>{{title}}</h3>
       <meal-list
         [childMealList]="masterMealList"
-        (clickSender)="showDetails($event)"
+        (editButtonClickSender)="showEdit($event)"
       ></meal-list>
+
+      <meal-edit
+      [childSelectedMeal]="selectedMeal"
+      (doneEditingClickedSender)="finishedEditing()"
+      ></meal-edit>
+
+  <!-- End Row Div -->
     </div>
   <!-- End Container Div -->
   </div>
@@ -25,7 +32,16 @@ import { MealService } from './meal.service';
 export class AppComponent implements OnInit {
   title = 'Ryan\'s Meal Tracker';
   masterMealList: Meal[];
-  selectedMeal: Meal;
+  selectedMeal: Meal = null;
+
+  showEdit(clickedMeal: Meal) {
+    this.selectedMeal = clickedMeal;
+    console.log(clickedMeal);
+  }
+
+  finishedEditing() {
+    this.selectedMeal = null;
+  }
 
   constructor(private mealService: MealService) { }
 
@@ -39,10 +55,10 @@ export class AppComponent implements OnInit {
     this.getMeals();
   }
 
-  onSelect(meal: Meal): void {
-    this.selectedMeal = meal;
-    console.log(this.selectedMeal);
-  }
+  // onSelect(meal: Meal): void {
+  //   this.selectedMeal = meal;
+  //   console.log(this.selectedMeal);
+  // }
 
 // End App Component
 }
