@@ -3,11 +3,14 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 
-//Custom Work
+//Custom Components
 import { AppComponent } from './app.component';
 import { MealListComponent } from './meal-list.component';
 import { MealEditComponent } from './meal-edit.component';
 import { MealAddComponent } from './meal-add.component';
+
+//Custom Pipes
+import { CaloriesPipe } from './calories.pipe';
 
 @NgModule({
   imports: [
@@ -18,7 +21,8 @@ import { MealAddComponent } from './meal-add.component';
     AppComponent,
     MealListComponent,
     MealEditComponent,
-    MealAddComponent
+    MealAddComponent,
+    CaloriesPipe
   ],
   bootstrap:    [ AppComponent ]
 })
