@@ -11,28 +11,11 @@ import { MealService } from './meal.service';
   <div class='container'>
     <div class="row">
       <h3>{{title}}</h3>
-      <div class="col-sm-12">
-        <table class="table table-bordered">
-          <thead class="inverse">
-            <tr>
-              <th>Name</th>
-              <th>Details</th>
-              <th>calories</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let meal of masterMealList"
-              [class.selected]="meal === selectedMeal"
-              (click)="onSelect(meal)">
-              <td>{{ meal.name }}</td>
-              <td>{{ meal.details }}</td>
-              <td>{{ meal.calories }}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      <meal-list
+        [childMealList]="masterMealList"
+        (clickSender)="showDetails($event)"
+      ></meal-list>
     </div>
-
   <!-- End Container Div -->
   </div>
   `,
