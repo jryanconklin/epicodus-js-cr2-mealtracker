@@ -11,6 +11,11 @@ import { MealService } from './meal.service';
   <div class='container'>
     <div class="row">
       <h3>{{title}}</h3>
+
+      <meal-add
+        (newMealSender)="addMeal($event)"
+      ></meal-add>
+
       <meal-list
         [childMealList]="masterMealList"
         (editButtonClickSender)="showEdit($event)"
@@ -21,9 +26,6 @@ import { MealService } from './meal.service';
       (doneEditingClickedSender)="finishedEditing()"
       ></meal-edit>
 
-      <meal-add
-        (newMealSender)="addMeal($event)"
-      ></meal-add>
 
   <!-- End Row Div -->
     </div>
@@ -39,12 +41,11 @@ export class AppComponent implements OnInit {
   selectedMeal: Meal = null;
 
   addMeal(newMealFromChild: Meal) {
-    this.masterMealList.push(newMealFromChild);
+    this.masterMealList.unshift(newMealFromChild);
   }
 
   showEdit(clickedMeal: Meal) {
     this.selectedMeal = clickedMeal;
-    console.log(clickedMeal);
   }
 
   finishedEditing() {
