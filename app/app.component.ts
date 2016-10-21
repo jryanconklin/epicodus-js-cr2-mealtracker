@@ -9,21 +9,38 @@ import { MealService } from './meal.service';
   selector: 'my-app',
   template: `
   <div class='container'>
-    <h3>{{title}}</h3>
-    <ul class="meals">
-      <li *ngFor="let meal of masterMealList"
-        [class.selected]="meal === selectedMeal"
-        (click)="onSelect(meal)">
-        {{ meal.name }} - {{ meal.description }} - {{ meal.calories }}
-      </li>
-    </ul>
+    <div class="row">
+      <h3>{{title}}</h3>
+      <div class="col-sm-12">
+        <table class="table table-bordered">
+          <thead class="inverse">
+            <tr>
+              <th>Name</th>
+              <th>Details</th>
+              <th>calories</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let meal of masterMealList"
+              [class.selected]="meal === selectedMeal"
+              (click)="onSelect(meal)">
+              <td>{{ meal.name }}</td>
+              <td>{{ meal.details }}</td>
+              <td>{{ meal.calories }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  <!-- End Container Div -->
   </div>
   `,
   providers: [MealService]
 })
 
 export class AppComponent implements OnInit {
-  title = 'Meal Tracker';
+  title = 'Ryan\'s Meal Tracker';
   masterMealList: Meal[];
   selectedMeal: Meal;
 
@@ -41,6 +58,7 @@ export class AppComponent implements OnInit {
 
   onSelect(meal: Meal): void {
     this.selectedMeal = meal;
+    console.log(this.selectedMeal);
   }
 
 // End App Component
